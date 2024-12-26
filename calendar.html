@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        main {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Table */
+
+        #calendar-div {
+            border-bottom: 1px solid #504B4B;
+            border-right: 1px solid #504B4B;
+            border-left: 1px solid #504B4B;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        #calendar {
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        th,
+        td {
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            width: calc(100vw / 7);
+            text-align: center;
+            position: relative;
+        }
+
+        th {
+            color: #969393;
+            font-weight: 400;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        .event {
+            color: #1C780D;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--Toolbar-->
+    <header class="theme-bg">
+        <div class="row d-flex justify-content-start  align-items-center mx-2 my-auto " style="height: 120px;">
+            <div class="col-auto  text-start ">
+                <i class="bi bi-chevron-left text-white fw-bold "></i>
+            </div>
+
+            <div class="col">
+                <p class="text-center fs-4  text-white my-auto text-uppercase" style="font-weight: 450;">Calendar</p>
+            </div>
+
+            <div class="col-auto text-end ">
+                <i class="bi bi-list text-white " style="font-size: 25px;"></i>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!--Content-->
+    <main class="py-3  mb-5 px-4">
+        <section class="mt-3">
+            <h4 class="theme-color text-uppercase text-center  my-0 py-0 " style="font-size: 24px; font-weight: 500;">
+                Calendar 2024</h4>
+
+
+            <!-- Calendar -->
+            <div class="d-flex justify-content-center align-content-center mt-3 py-3 bg-theme rounded-top-3 ">
+
+                <button class="bg-transparent border-0 " id="prevMonthBtn"><i
+                        class="bi bi-caret-left-fill text-white px-2 "></i></button>
+                <span class="text-white text-center text-uppercase " id="currentMonth"
+                    style="font-size: 20px; min-width: 100px;"></span>
+                <button class="bg-transparent border-0 " id="nextMonthBtn"><i
+                        class="bi bi-caret-right-fill text-white px-2"></i></button>
+
+            </div>
+
+            <div id="calendar-div" style="background-color: #ffffff;">
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+
+    <!--Footer-->
+    <footer class="container-fluid">
+        <div class="row py-2" style="background-color: #1C780D;">
+            <div class="col-4 text-center">
+                <img src="assets/home-vector.svg" alt="" style="height: 17px; width: 16.08px;">
+            </div>
+            <div class="col-4 text-center">
+                <img src="assets/time-vector.svg" alt="" style="height: 18px; width: 16.08px;">
+            </div>
+            <div class="col-4 text-center">
+                <i class="bi bi-person-fill text-white fs-5"></i>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="eventModalLabel">Event Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body border-0" id="modalBody">
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="theme-btn" data-bs-dismiss="modal" style="background-color: #1C780D; padding-inline: 10px; font-size: medium;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+    <!--Script for calendar-->
+    <script>
+        const currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth();
+
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        const prevMonthBtn = document.getElementById('prevMonthBtn');
+        const nextMonthBtn = document.getElementById('nextMonthBtn');
+        const currentMonthSpan = document.getElementById('currentMonth');
+
+        // Define events
+        const events = [
+            { date: new Date(currentYear, currentMonth, 10), title: 'Event 1: This is a very long description that should break into multiple lines when displayed.' },
+            { date: new Date(currentYear, currentMonth, 15), title: 'Event 2' },
+        ];
+
+        var eventTitle = document.getElementById('eventModalLabel');
+        eventTitle.innerText = "Ranveer bhai ki Shaadi aaj hai"
+
+        function createCalendar(year, month) {
+            const tableBody = document.querySelector('#calendar tbody');
+            tableBody.innerHTML = '';
+
+            const date = new Date(year, month);
+            const lastDay = new Date(year, month + 1, 0).getDate();
+
+            let week = document.createElement('tr');
+            for (let i = 1; i <= lastDay; i++) {
+                date.setDate(i);
+                if (i === 1) {
+                    for (let j = 0; j < date.getDay(); j++) {
+                        week.appendChild(document.createElement('td'));
+                    }
+                }
+                const day = document.createElement('td');
+                day.textContent = i;
+
+                const event = events.find(event => event.date.getDate() === i && event.date.getMonth() === month && event.date.getFullYear() === year);
+                if (event) {
+                    day.classList.add('event');
+                    day.setAttribute('data-title', event.title);
+                    day.addEventListener('click', function () {
+                        showModal(event.title);
+                    });
+                }
+                if (date.toDateString() === new Date().toDateString()) {
+                    day.classList.add('today');
+                }
+                week.appendChild(day);
+                if (date.getDay() === 6 || i === lastDay) {
+                    tableBody.appendChild(week);
+                    week = document.createElement('tr');
+                }
+            }
+
+            currentMonthSpan.textContent = `${monthNames[month]}`;
+        }
+
+        function showModal(eventDetails) {
+            const modalBody = document.getElementById('modalBody');
+            modalBody.textContent = eventDetails;
+            const modal = new bootstrap.Modal(document.getElementById('eventModal'));
+            modal.show();
+        }
+
+        createCalendar(currentYear, currentMonth);
+
+        prevMonthBtn.addEventListener('click', function () {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            createCalendar(currentYear, currentMonth);
+        });
+
+        nextMonthBtn.addEventListener('click', function () {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            createCalendar(currentYear, currentMonth);
+        });
+    </script>
+</body>
+
+</html>

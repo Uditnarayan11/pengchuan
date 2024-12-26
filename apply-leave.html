@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Leave</title>
+
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        main {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Table */
+
+        #calendar-div {
+            border-bottom: 2px solid #1C780D;
+            border-right: 2px solid #1C780D;
+            border-left: 2px solid #1C780D;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        #calendar {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            color: #969393;
+            font-weight: 400;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        /* .today {
+            width: 1px;
+            height: 10px;
+            background: #1C780D;
+            border-radius: 50px;
+            color: white;
+        } */
+
+
+        .dropdown-border {
+            border: 1px solid #1C780D;
+            /* Border style */
+        }
+
+        .dropdown-border:focus {
+            border: 1px solid #1C780D;
+        }
+
+        .dropdown-menu {
+            background-color: #fff;
+            /* Background color */
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!--Toolbar-->
+    <header class="theme-bg">
+        <div class="row d-flex justify-content-start  align-items-center mx-2 my-auto " style="height: 120px;">
+            <div class="col-auto  text-start ">
+                <i class="bi bi-chevron-left text-white fw-bold "></i>
+            </div>
+
+            <div class="col">
+                <p class="text-center fs-4  fw-light  text-white my-auto text-uppercase ">Apply Leave</p>
+            </div>
+
+            <div class="col-auto text-end ">
+                <i class="bi bi-list text-white " style="font-size: 25px;"></i>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!--Content-->
+    <main class="theme-container mt-1 mb-5 mx-0 px-3">
+        <p class="text-uppercase theme-color mb-0 p-0" style="font-size: 24px;">new leave</p>
+
+        <!--Leave Type-->
+        <p class="mt-2 mb-1" style="color:#484A4B; font-weight: 500;">Leave Type</p>
+        <div class="dropdown mb-3 py-0">
+
+            <div class="dropdown-border d-flex justify-content-between align-items-center px-2 py-2 rounded ">
+                <p class="my-auto " style="color: #969393;">Choose here</p>
+                <div class="rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center  m-1"
+                    style="width: 22px;height: 22px;">
+                    <button type="button" class="btn text-white " data-bs-toggle="dropdown">
+                        <i class="bi bi-chevron-down text-white fw-bold"></i>
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item" href="#">Link 1</a></li>
+                        <li><a class="dropdown-item" href="#">Link 2</a></li>
+                        <li><a class="dropdown-item" href="#">Link 3</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--Leave Reason-->
+        <p class="mb-0" style="color:#484A4B; font-weight: 500;">Leave Reason</p>
+        <textarea class="form-control mt-1" rows="2" placeholder="Leave Reason"
+            style="border : 1px solid #1C780D ; color: #969393;"></textarea>
+        <div class="form-check my-2" style="font-size: 17px;">
+            <input type="checkbox" class="form-check-input" id="halfDay">
+            <label for="halfDay">Half Day</label>
+        </div>
+
+        <div class="row m-0">
+            <div class="col-5 p-0">
+                <p class="mb-0" style="color:#484A4B; font-weight: 500;">Start Date</p>
+                <input class="rounded p-1 w-100 mt-1" type="text" placeholder="Start Date"
+                    style="border : 1px solid #1C780D">
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5 p-0">
+                <p class="mb-0" style="color:#484A4B; font-weight: 500;">End Date</p>
+                <input class="rounded p-1 w-100 mt-1" type="text" placeholder="End Date"
+                    style="border : 1px solid #1C780D; ">
+            </div>
+        </div>
+
+        <!--Calendar-->
+        <div class="d-flex justify-content-center align-content-center mt-3 py-3 bg-theme rounded-top-3 ">
+
+            <button class="bg-transparent border-0 " id="prevMonthBtn"><i
+                    class="bi bi-caret-left-fill text-white px-2 "></i></button>
+            <span class="text-white text-center text-uppercase " id="currentMonth"
+                style="font-size: 20px; min-width: 100px;"></span>
+            <button class="bg-transparent border-0 " id="nextMonthBtn"><i
+                    class="bi bi-caret-right-fill text-white px-2"></i></button>
+
+        </div>
+
+        <div id="calendar-div" style="background-color: #F8F7F7;">
+            <table id="calendar">
+                <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <!--Attachment-->
+        <p class="mt-3 mb-0" style="color:#484A4B; font-weight: 500;">Attachment</p>
+        <div class="row mt-0">
+            <div class="col-8">
+                <div class="shadow-sm p-2 my-1 rounded ">
+                    <div class="d-flex justify-content-between align-items-center ">
+                        <div class="d-flex justify-content-center align-items-center  ">
+                            <button class="theme-btn-upload" id="choose-file">Choose Your File</button>
+                            <input type="file" id="file-input" style="display: none;">
+                            <div
+                                class="rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-1">
+                                <img src="assets/upload-vector.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 my-auto ">
+                <p class="my-auto " style="font-size: 10px; color: #969393;">No File Choosen</p>
+            </div>
+        </div>
+        <p class="my-auto " style="font-size: 12px; color: #969393;">Upload Files Only: PDF, GIF, PNG, JPG, JPEG</p>
+
+        <!--Remark-->
+        <p class="my-2" style="color:#484A4B; font-weight: 500;">Remark</p>
+        <textarea class="form-control mt-1" rows="3" placeholder="Remark"
+            style="border : 1px solid #1C780D; color: #969393;"></textarea>
+
+        <button class="d-flex px-5 text-center theme-btn mx-auto my-4 text-uppercase ">apply leave</button>
+
+    </main>
+
+
+
+    <!--Footer-->
+    <footer class="container-fluid">
+        <div class="row py-2" style="background-color: #1C780D;">
+            <div class="col-4 text-center">
+                <img src="assets/home-vector.svg" alt="" style="height: 17px; width: 16.08px;">
+            </div>
+            <div class="col-4 text-center">
+                <img src="assets/time-vector.svg" alt="" style="height: 18px; width: 16.08px;">
+            </div>
+            <div class="col-4 text-center">
+                <i class="bi bi-person-fill text-white fs-5"></i>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+
+    <!--Script for calendar-->
+    <script>
+        const currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth();
+
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        const prevMonthBtn = document.getElementById('prevMonthBtn');
+        const nextMonthBtn = document.getElementById('nextMonthBtn');
+        const currentMonthSpan = document.getElementById('currentMonth');
+
+        function createCalendar(year, month) {
+            const tableBody = document.querySelector('#calendar tbody');
+            tableBody.innerHTML = '';
+
+            const date = new Date(year, month);
+            const lastDay = new Date(year, month + 1, 0).getDate();
+
+            let week = document.createElement('tr');
+            for (let i = 1; i <= lastDay; i++) {
+                date.setDate(i);
+                if (i === 1) {
+                    for (let j = 0; j < date.getDay(); j++) {
+                        week.appendChild(document.createElement('td'));
+                    }
+                }
+                const day = document.createElement('td');
+                day.textContent = i;
+                if (date.toDateString() === new Date().toDateString()) {
+                    day.classList.add('today');
+                }
+                week.appendChild(day);
+                if (date.getDay() === 6 || i === lastDay) {
+                    tableBody.appendChild(week);
+                    week = document.createElement('tr');
+                }
+            }
+
+            currentMonthSpan.textContent = `${monthNames[month]}`;
+        }
+
+        createCalendar(currentYear, currentMonth);
+
+        prevMonthBtn.addEventListener('click', function () {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            createCalendar(currentYear, currentMonth);
+        });
+
+        nextMonthBtn.addEventListener('click', function () {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            createCalendar(currentYear, currentMonth);
+        });
+    </script>
+
+
+    <!-- Choose File -->
+    <script>
+        document.getElementById('choose-file').addEventListener('click', function () {
+            document.getElementById('file-input').click();
+        });
+    </script>
+
+</body>
+
+</html>

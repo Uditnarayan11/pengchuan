@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        main {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 42px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 19px;
+            width: 19px;
+            left: 0px;
+            bottom: 0px;
+            background-color: #1C780D;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #ffffff;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #1C780D;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(21px);
+            -ms-transform: translateX(21px);
+            transform: translateX(21px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!--Toolbar-->
+    <header class="theme-bg">
+        <div class="row d-flex justify-content-start  align-items-center mx-2 my-auto " style="height: 120px;">
+            <div class="col-auto  text-start ">
+                <i class="bi bi-chevron-left text-white fw-bold "></i>
+            </div>
+
+            <div class="col">
+                <p class="text-center fs-4  text-white my-auto text-uppercase" style="font-weight: 450;">SETTINGS</p>
+            </div>
+
+            <div class="col-auto text-end ">
+                <i class="bi bi-list text-white " style="font-size: 25px;"></i>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!--Content-->
+    <main class="py-3  mb-5 px-4">
+
+        <!--Search-->
+
+        <div class="d-flex justify-content-center align-items-center  mt-5  mx-2 rounded "
+            style="border: 1px solid #333333; opacity: 0.5;">
+            <input class="form-control" placeholder="Search Settings" type="search" style="border : none">
+            <i class="bi bi-search py-1 px-2"></i>
+        </div>
+
+
+        <section class="m-2 ">
+            <!--Language-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 p-2  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <i class="bi bi-translate theme-color" style="font-size: 28px;"></i>
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">Language</p>
+                        <p class="text-start  m-0 pb-1" style="font-size: 12px; color: #969393">English (US)</p>
+
+                    </div>
+                </div>
+
+
+                <div class="col-auto rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-2"
+                    style="background: #969393; opacity: 0.5;">
+                    <i class="bi bi-chevron-right text-white  fw-bold "></i>
+                </div>
+
+            </div>
+
+            <!--Change Password-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 p-2  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <img src="assets/lock-vector.png" alt="" style="height: 29px;width: 25px;">
+
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">Change Password</p>
+
+                    </div>
+                </div>
+
+
+                <div class="col-auto rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-2"
+                    style="background: #969393; opacity: 0.5;">
+                    <i class="bi bi-chevron-right text-white  fw-bold "></i>
+                </div>
+
+            </div>
+
+
+            <!--Location-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 px-2  py-0  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <i class="bi bi-geo-alt theme-color" style="font-size: 28px;"></i>
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">Location</p>
+                        <p class="text-start  m-0 pb-1" style="font-size: 12px; color: #969393">Allow</p>
+
+                    </div>
+                </div>
+
+
+                <label class="switch" style="border: 1px solid #484a4b4c; border-radius: 50px;">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+
+
+            </div>
+
+
+            <!--Notifications-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 p-2  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <i class="bi bi-bell theme-color fw-bold " style="font-size: 26px;"></i>
+
+
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">Notifications</p>
+
+                    </div>
+                </div>
+
+
+                <div class="col-auto rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-2"
+                    style="background: #969393; opacity: 0.5;">
+                    <i class="bi bi-chevron-right text-white  fw-bold "></i>
+                </div>
+
+            </div>
+
+            <!--Help Center-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 p-2  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <i class="bi bi-question-circle theme-color fw-bold " style="font-size: 26px;"></i>
+
+
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">Help Center</p>
+
+                    </div>
+                </div>
+
+
+                <div class="col-auto rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-2"
+                    style="background: #969393; opacity: 0.5;">
+                    <i class="bi bi-chevron-right text-white  fw-bold "></i>
+                </div>
+
+            </div>
+
+
+            <!--General-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 p-2  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <i class="bi bi-pencil-square theme-color fw-bold " style="font-size: 26px;"></i>
+
+
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">General</p>
+
+                    </div>
+                </div>
+
+
+                <div class="col-auto rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-2"
+                    style="background: #969393; opacity: 0.5;">
+                    <i class="bi bi-chevron-right text-white  fw-bold "></i>
+                </div>
+
+            </div>
+
+
+            <!--About us-->
+            <div class="d-inline-flex  justify-content-between align-items-center w-100 p-2  bg-white "
+                style="color: #484A4B; border-bottom: 2px solid #9693934a;">
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <i class="bi bi-info-circle theme-color fw-bold " style="font-size: 26px;"></i>
+
+
+                    <div class="mx-1 my-auto p-2 border-danger">
+                        <p class="text-start  m-0 pb-1"
+                            style="font-size: 17px; font-weight: 400 ;line-height: normal; ">About Us</p>
+
+                    </div>
+                </div>
+
+
+                <div class="col-auto rounded-circle theme-menu-eclipse d-flex justify-content-center align-items-center m-2"
+                    style="background: #969393; opacity: 0.5;">
+                    <i class="bi bi-chevron-right text-white  fw-bold "></i>
+                </div>
+
+            </div>
+
+            <button type="submit"" class=" theme-btn-shadow btn rounded theme-color d-flex mx-auto text-center px-4
+                my-5" style="font-weight: 500;">Close</button>
+
+
+        </section>
+
+    </main>
+
+
+    <!--Footer-->
+    <footer class="container-fluid">
+        <div class="row py-2" style="background-color: #1C780D;">
+            <div class="col-4 text-center">
+                <img src="assets/home-vector.svg" alt="" style="height: 17px; width: 16.08px;">
+            </div>
+            <div class="col-4 text-center">
+                <img src="assets/time-vector.svg" alt="" style="height: 18px; width: 16.08px;">
+            </div>
+            <div class="col-4 text-center">
+                <i class="bi bi-person-fill text-white fs-5"></i>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.theme-container {
+    margin: 0 auto;
+    padding: 10px 10px 20px 5px;
+    width: 100%;
+}
+
+.theme-border {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #1C780D;
+}
+
+.theme-color {
+    color: #1C780D;
+}
+
+.bg-theme {
+    background: #1C780D;
+}
+
+.theme-dash-box {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.theme-dash-box p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.theme-dash-box h3 {
+    font-size: 28px;
+
+}
+
+.theme-btn {
+    background: linear-gradient(180deg, #1C780D 0%, rgba(21, 124, 5, 0.28) 137.5%);
+    border-radius: 7px;
+    border: none;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.theme-btn-upload {
+    box-sizing: border-box;
+    width: 157px;
+    height: 27px;
+    left: 44px;
+    top: 431px;
+    background: #EAEAEA;
+    border: 0.5px solid #939393;
+    color: #484848;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.theme-bg {
+    background: linear-gradient(180deg, #1C780D 0%, rgba(21, 124, 5, 0.28) 233.27%);
+    /* Rectangle 439 */
+}
+
+.theme-eclipse {
+    width: 54px;
+    height: 54px;
+    background-color: #1C780D;
+    /* background-color: rgba(255, 0, 0, 0.2); */
+    border-radius: 7px;
+}
+
+
+.theme-menu-eclipse {
+    width: 25px;
+    height: 25px;
+    background: #1C780D;
+    border-radius: 7px;
+}
+
+.theme-menu-eclipse i {
+    font-size: 12px;
+}
+
+.theme-menu-item :hover {
+    color: #1C780D;
+}
+
+.theme-menu-item h3 {
+    font-size: 13px;
+}
+
+.theme-shadow {
+    box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.theme-fot-img {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    margin-bottom: 42px;
+    z-index: -1;
+}
+
+.theme-btn-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.theme-text-secondary{
+    color: #484A4B;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: auto;
+    max-height: 50px;
+    z-index: 1;
+}
